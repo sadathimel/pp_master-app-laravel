@@ -25,7 +25,7 @@ class AgencyController extends Controller
      */
     public function create()
     {
-        //
+        return view('agencies.create');
     }
 
     /**
