@@ -78,10 +78,10 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('user.edit', ['user' => Auth::user()->id]) }}" class="brand-link">
-                @if(Auth::user()->image)
-                <img src="{{ asset('/storage/images/'.Auth::user()->image) }}" alt="AdminLTE Logo" style="width: 80px"; height="80px"; margin= "0px";
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                    @endif
+                {{-- @if (Auth::user()->image) --}}
+                <img src="{{ asset('upload/users/' . Auth::user()->image) }}" alt="Admin Logo" style="width: 40px";
+                    height="40px";class="brand-image img-circle elevation-3">
+                {{-- @endif --}}
                 <span class="brand-text font-weight-light">{{ ucfirst(Auth::user()->name) }}</span>
             </a>
 
@@ -106,46 +106,20 @@
                             </a>
 
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Month wise Due Summary
 
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Month wise Bill
-
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    All Billing
-
-                                </p>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
-                                    Charts
+                                    Agency
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="{{ route('agency') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>ChartJS</p>
+                                        <p>Agencys List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -195,6 +169,8 @@
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
+
+
 
             <!-- Main content -->
             <div class="content">

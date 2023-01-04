@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-header">
             <h1 class="card-title"><b>User List</b></h1>
-            <a href="{{route('user.create')}}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit Student">
+            <a href="{{route('user.create')}}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit User">
                 <h5>Create New User</h5>
             </a>
         </div>

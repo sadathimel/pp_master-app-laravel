@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AgencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,23 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
-    Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
-    Route::get('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
-    Route::post('/user/create', [App\Http\Controllers\UserController::class, 'store']);
-    Route::get('/user/edit/{user}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
-    Route::post('/user/edit/{user}', [App\Http\Controllers\UserController::class, 'update']);
+    // users 
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user/create', [UserController::class, 'store']);
+    Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/user/edit/{user}', [UserController::class, 'update']);
+
+    // agencies 
+    Route::get('/agency', [AgencyController::class, 'index'])->name('agency');
+    Route::get('/agency/create', [AgencyController::class, 'create'])->name('agency.create');
+    Route::post('/agency/create', [AgencyController::class, 'store']);
+    Route::get('/agency/edit/{agency}', [AgencyController::class, 'edit'])->name('agency.edit');
+    Route::post('/agency/edit/{agency}', [AgencyController::class, 'update']);
+    Route::post('/agency/edit/{agency}', [AgencyController::class, 'delete']);
+
+
+
+
+
 });

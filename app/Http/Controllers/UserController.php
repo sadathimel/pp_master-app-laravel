@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
+
 
 class UserController extends Controller
 {
     public function index()
     {
         $users= User::all();
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users')); 
     }
     public function edit(User $user)
     {
@@ -39,7 +41,19 @@ class UserController extends Controller
         $user->password =Hash::make( $request->password);
         
         if($request->image){
-            $user->image = $request->image->store('images');
+            // $user->image = $request->image->store('images');
+        $image       = $request->file('image');
+        $filename    = $image->getClientOriginalName();
+
+        //Fullsize
+        $image->move($filename,$filename);
+
+        $image_resize = Image::make($filename.'/'.$filename);
+        $image_resize->resize(300, 300);
+        $image_resize->save(public_path('upload/users/' .$filename));
+
+        $user->image = $filename;
+
         }
         $user->save();
         return redirect()->route('user');
@@ -62,7 +76,19 @@ class UserController extends Controller
             $user->password =Hash::make( $request->password);
         }
         if($request->image){
-            $user->image = $request->image->store('images');
+            // $user->image = $request->image->store('images');
+        $image       = $request->file('image');
+        $filename    = $image->getClientOriginalName();
+
+        //Fullsize
+        $image->move($filename,$filename);
+
+        $image_resize = Image::make($filename.'/'.$filename);
+        $image_resize->resize(300, 300);
+        $image_resize->save(public_path('upload/users/' .$filename));
+
+        $user->image = $filename;
+
         }
         $user->save();
         return redirect()->route('user');
