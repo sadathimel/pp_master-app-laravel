@@ -3,9 +3,9 @@
     {{-- @extends('layouts.app') --}}
     <div class="card">
         <div class="card-header">
-            <h1 class="card-title">Create New User</h1>
-            <a href="{{ route('agency') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit Student">
-                <h5>User List</h5>
+            <h1 class="text-red display-5 px-2 py-2 bg-purple text-center d-block rounded">Create New Agency</h1>
+            <a href="{{ route('agency') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="agency list">
+                <h5>Agency List</h5>
             </a>
         </div>
         <!-- /.card-header -->
@@ -19,18 +19,18 @@
 
 
                             <div class="card-body">
-                                <form method="POST" action="{{ route('user.create') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('agency.create') }}" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="row mb-3">
                                         <div class="col-md-4">
 
-                                            <label for="name" class=" col-form-label text-md-end">Name</label>
+                                            <label for="name" class=" col-form-label text-md-end">Agency Name</label>
                                             <div class="">
                                                 <input id="name" type="text"
                                                     class="form-control @error('name') is-invalid @enderror" name="name"
                                                     value="{{ old('name') }}" required autocomplete="name" autofocus
-                                                    placeholder="Eenter User Name">
+                                                    placeholder="Enter Agency Name">
 
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
 
                                         <div class="col-md-4">
                                             <div class=" mb-4">
-                                                <label for="short_code" class="col-form-label text-md-end">Short
+                                                <label for="short_code" class="col-form-label text-md-end">Agency Short
                                                     Code</label>
                                                 <div class="">
                                                     <input id="short_code" type="text"
@@ -65,10 +65,14 @@
                                                     Type</label>
 
                                                 <div class="">
-                                                    <input id="agency_type" type="dropdown"
-                                                        class="form-control @error('agency_type') is-invalid @enderror"
-                                                        name="agency_type" value="{{ old('agency_type') }}" required
-                                                        autocomplete="agency_type" placeholder="Enter agency type">
+
+
+                                                    <select name="agency_type" class="form-control select2"
+                                                        style="width: 100%;">
+                                                        <option value="">Select Agency Type</option>
+                                                        <option value="1">Agency</option>
+                                                        <option value="2">Direct</option>
+                                                    </select>
 
                                                     @error('agency_type')
                                                         <span class="invalid-feedback" role="alert">
@@ -85,13 +89,13 @@
                                         <div class="col-md-4">
 
                                             <label for="contact_person" class=" col-form-label text-md-end">Contact
-                                                person</label>
+                                                Person Name</label>
                                             <div class="">
                                                 <input id="contact_person" type="text"
                                                     class="form-control @error('contact_person') is-invalid @enderror"
                                                     name="contact_person" value="{{ old('contact_person') }}" required
                                                     autocomplete="contact_person" autofocus
-                                                    placeholder="Eenter User contact_person">
+                                                    placeholder="Enter Contact Person Name">
 
                                                 @error('contact_person')
                                                     <span class="invalid-feedback" role="alert">
@@ -103,7 +107,8 @@
 
                                         <div class="col-md-4">
                                             <div class=" mb-4">
-                                                <label for="email" class="col-form-label text-md-end">Email</label>
+                                                <label for="email" class="col-form-label text-md-end">Email
+                                                    address</label>
                                                 <div class="">
                                                     <input id="email" type="email"
                                                         class="form-control @error('email') is-invalid @enderror"
@@ -121,7 +126,7 @@
 
                                         <div class="col-md-4">
                                             <div class="mb-4">
-                                                <label for="phone" class="col-form-label text-md-end">Phone</label>
+                                                <label for="phone" class="col-form-label text-md-end">Phone No</label>
 
                                                 <div class="">
                                                     <input id="phone" type="phone"
@@ -182,10 +187,12 @@
                                                 <label for="country" class="col-form-label text-md-end">Country</label>
 
                                                 <div class="">
-                                                    <input id="country" type="text"
-                                                        class="form-control @error('country') is-invalid @enderror"
-                                                        name="country" value="{{ old('country') }}" required
-                                                        autocomplete="country" placeholder="Enter country">
+                                                    <select name="country" class="form-control select2"
+                                                        style="width: 100%;">
+                                                        <option value="">Select Country</option>
+                                                        <option value="1">Bangladesh</option>
+                                                        <option value="2">Others</option>
+                                                    </select>
 
                                                     @error('country')
                                                         <span class="invalid-feedback" role="alert">
@@ -204,13 +211,14 @@
                                                 <label for="agency_commission" class="col-form-label text-md-end">Agency
                                                     Commission</label>
 
-                                                <div class="">
+                                                <div class="input-group mb-3">
                                                     <input id="agency_commission" type="text"
                                                         class="form-control @error('agency_commission') is-invalid @enderror"
                                                         name="agency_commission" value="{{ old('agency_commission') }}"
-                                                        required autocomplete="agency_commission"
-                                                        placeholder="Enter agency Commission">
-
+                                                        required autocomplete="agency_commission" placeholder=".00">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
                                                     @error('agency_commission')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -223,12 +231,14 @@
                                         <div class="col-md-4">
                                             <div class=" mb-4">
                                                 <label for="vat" class="col-form-label text-md-end">Vat</label>
-                                                <div class="">
+                                                <div class="input-group mb-3">
                                                     <input id="vat" type="text"
                                                         class="form-control @error('vat') is-invalid @enderror"
                                                         name="vat" value="{{ old('vat') }}" required
-                                                        autocomplete="vat" placeholder="Enter vat">
-
+                                                        autocomplete="vat" placeholder=".00">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
                                                     @error('vat')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -243,13 +253,15 @@
                                                 <label for="supplementary_vat"
                                                     class="col-form-label text-md-end">Supplementary Vat</label>
 
-                                                <div class="">
+                                                <div class="input-group mb-3">
                                                     <input id="supplementary_vat" type="text"
                                                         class="form-control @error('supplementary_vat') is-invalid @enderror"
                                                         name="supplementary_vat" value="{{ old('supplementary_vat') }}"
-                                                        required autocomplete="supplementary_vat"
-                                                        placeholder="Enter supplementary_vat">
+                                                        required autocomplete="supplementary_vat" placeholder=".00">
 
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
                                                     @error('supplementary_vat')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -267,10 +279,14 @@
                                                 <label for="vat_on" class="col-form-label text-md-end">Vat on</label>
 
                                                 <div class="">
-                                                    <input id="vat_on" type="text"
-                                                        class="form-control @error('vat_on') is-invalid @enderror"
-                                                        name="vat_on" value="{{ old('vat_on') }}" required
-                                                        autocomplete="vat_on" placeholder="Enter vat_on">
+                                                    <select name="vat_on" class="form-control select2"
+                                                        style="width: 100%;">
+                                                        <option value="">Select Vat on</option>
+                                                        <option value="1">Gross</option>
+                                                        <option value="2">Net</option>
+                                                        <option value="3">Gross-Agency Commission</option>
+                                                        <option value="4">Net-Agency Commission</option>
+                                                    </select>
 
                                                     @error('vat_on')
                                                         <span class="invalid-feedback" role="alert">
@@ -286,10 +302,14 @@
                                                 <label for="commission_on" class="col-form-label text-md-end">Commission
                                                     on</label>
                                                 <div class="">
-                                                    <input id="commission_on" type="text"
-                                                        class="form-control @error('commission_on') is-invalid @enderror"
-                                                        name="commission_on" value="{{ old('commission_on') }}" required
-                                                        autocomplete="commission_on" placeholder="Enter commission_on">
+                                                    <select name="commission_on" class="form-control select2"
+                                                        style="width: 100%;">
+                                                        <option value="">Select Vat on</option>
+                                                        <option value="1">Gross</option>
+                                                        <option value="2">Net</option>
+                                                        <option value="3">Gross-Agency Commission</option>
+                                                        <option value="4">Net-Agency Commission</option>
+                                                    </select>
 
                                                     @error('commission_on')
                                                         <span class="invalid-feedback" role="alert">
@@ -299,14 +319,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
-
-
-
-
-
 
 
                                     <div class="row mb-0 ">

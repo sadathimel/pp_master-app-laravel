@@ -39,7 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/agency/create', [AgencyController::class, 'store']);
     Route::get('/agency/edit/{agency}', [AgencyController::class, 'edit'])->name('agency.edit');
     Route::post('/agency/edit/{agency}', [AgencyController::class, 'update']);
-    Route::post('/agency/edit/{agency}', [AgencyController::class, 'delete']);
+    // Route::post('/agency/edit/{agency}', [AgencyController::class, 'delete']);
+    Route::get('/agency/view/{agency}', [AgencyController::class, 'show'])->name('agency.view');
 
 
 
