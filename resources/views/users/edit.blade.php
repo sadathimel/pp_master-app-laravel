@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header">
             <h1 class="card-title">Edit User</h1>
-            <a href="{{ route('user') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit Student">
+            <a href="{{ route('user') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit User">
                 <h5>User List</h5>
             </a>
         </div>

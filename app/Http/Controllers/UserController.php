@@ -15,16 +15,19 @@ class UserController extends Controller
         $users= User::all();
         return view('users.index', compact('users')); 
     }
+    
+   
+    public function create()
+    {
+        return view('users.create');
+    }
+
     public function edit(User $user)
     {
 
         return view('users.edit', compact('user'));
     }
 
-    public function create()
-    {
-        return view('users.create');
-    }
     public function store(Request $request)
     {
 

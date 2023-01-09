@@ -93,7 +93,8 @@ class AgencyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $agency= Agency::find($id);
+        return view('agencies.edit', compact('agency'));
     }
 
     /**

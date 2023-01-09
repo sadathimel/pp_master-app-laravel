@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+
+@section('title') {{'User'}} @endsection
+
 @section('content')
     <div class="card">
         <div class="card-header">
