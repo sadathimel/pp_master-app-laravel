@@ -1,5 +1,7 @@
 @extends('layouts.layout')
-@section('title') {{$agency->name}} @endsection
+@section('title')
+    {{ $agency->name }}
+@endsection
 @section('content')
     <div class="card">
         <div class="card-header">
@@ -30,7 +32,7 @@
                     </tr>
                     <tr>
                         <th>Agency Type</th>
-                        <td>{{ $agency->agency_type }}</td>
+                        <td>{{ [1 => 'Agency', 2 => 'Direct'][$agency->agency_type] }}</td>
                         <th>Contact Person Name</th>
                         <td>{{ $agency->contact_person }}</td>
                     </tr>

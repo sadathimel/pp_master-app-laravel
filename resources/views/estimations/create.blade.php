@@ -1,15 +1,11 @@
 @extends('layouts.layout')
-@section('title')
-    {{ $agency->name }}
-@endsection
-
 @section('content')
     {{-- @extends('layouts.app') --}}
     <div class="card">
         <div class="card-header">
-            <h1 class="text-red display-5 px-2 py-2 bg-purple text-center d-block rounded">Edit Agency</h1>
-            <a href="{{ route('agency') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="agency list">
-                <h5>Agency List</h5>
+            <h1 class="text-red display-5 px-2 py-2 bg-purple text-center d-block rounded">Create New Estimation</h1>
+            <a href="{{ route('estimation') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="estimation list">
+                <h5>Estimation List</h5>
             </a>
         </div>
         <!-- /.card-header -->
@@ -23,18 +19,44 @@
 
 
                             <div class="card-body">
-                                <form method="POST" action="{{ route('agency.edit', ['agency' => $agency->id]) }}"
+                                <form method="POST" action="{{ route('estimation.create') }}"
                                     enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="row mb-3">
+
+                                        <div class="col-md-4">
+                                            <div class="mb-4">
+                                                <label for="agency_type" class="col-form-label text-md-end">Agency
+                                                    Type</label>
+
+                                                <div class="">
+                                                    <select name="agency_name" class="form-control select2"
+                                                        style="width: 100%;">
+                                                        <option value="">Select Agency Type</option>
+                                                        @foreach ($agency_names as $id => $name)
+                                                            <option value="{{ $id }}">{{ $name }}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                    </select>
+
+                                                    @error('agency_type')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-4">
 
                                             <label for="name" class=" col-form-label text-md-end">Agency Name</label>
                                             <div class="">
                                                 <input id="name" type="text"
                                                     class="form-control @error('name') is-invalid @enderror" name="name"
-                                                    value="{{ $agency->name }}" required autocomplete="name" autofocus
+                                                    value="{{ old('name') }}" required autocomplete="name" autofocus
                                                     placeholder="Enter Agency Name">
 
                                                 @error('name')
@@ -52,7 +74,7 @@
                                                 <div class="">
                                                     <input id="short_code" type="text"
                                                         class="form-control @error('short_code') is-invalid @enderror"
-                                                        name="short_code" value="{{ $agency->short_code }}" required
+                                                        name="short_code" value="{{ old('short_code') }}" required
                                                         autocomplete="short_code" placeholder="Enter short code">
 
                                                     @error('short_code')
@@ -64,29 +86,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4">
-                                            <div class="mb-4">
-                                                <label for="agency_type" class="col-form-label text-md-end">Agency
-                                                    Type</label>
 
-                                                <div class="">
-
-
-                                                    <select name="agency_type" class="form-control select2"
-                                                        style="width: 100%;">
-                                                        <option value="">Select Agency Type</option>
-                                                        <option value="1">Agency</option>
-                                                        <option value="2">Direct</option>
-                                                    </select>
-
-                                                    @error('agency_type')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <div class="row mb-3">
@@ -98,7 +98,7 @@
                                             <div class="">
                                                 <input id="contact_person" type="text"
                                                     class="form-control @error('contact_person') is-invalid @enderror"
-                                                    name="contact_person" value="{{ $agency->contact_person }}" required
+                                                    name="contact_person" value="{{ old('contact_person') }}" required
                                                     autocomplete="contact_person" autofocus
                                                     placeholder="Enter Contact Person Name">
 
@@ -117,7 +117,7 @@
                                                 <div class="">
                                                     <input id="email" type="email"
                                                         class="form-control @error('email') is-invalid @enderror"
-                                                        name="email" value="{{ $agency->email }}" required
+                                                        name="email" value="{{ old('email') }}" required
                                                         autocomplete="email" placeholder="Enter Email">
 
                                                     @error('email')
@@ -136,7 +136,7 @@
                                                 <div class="">
                                                     <input id="phone" type="phone"
                                                         class="form-control @error('phone') is-invalid @enderror"
-                                                        name="phone" value="{{ $agency->phone }}" required
+                                                        name="phone" value="{{ old('phone') }}" required
                                                         autocomplete="phone" placeholder="Enter phone">
 
                                                     @error('phone')
@@ -157,7 +157,7 @@
                                                 <div class="">
                                                     <input id="address" type="text"
                                                         class="form-control @error('address') is-invalid @enderror"
-                                                        name="address" value="{{ $agency->address }}" required
+                                                        name="address" value="{{ old('address') }}" required
                                                         autocomplete="address" placeholder="Enter address">
 
                                                     @error('address')
@@ -175,7 +175,7 @@
                                                 <div class="">
                                                     <input id="city" type="text"
                                                         class="form-control @error('city') is-invalid @enderror"
-                                                        name="city" value="{{ $agency->city }}" required
+                                                        name="city" value="{{ old('city') }}" required
                                                         autocomplete="city" placeholder="Enter city">
 
                                                     @error('city')
@@ -219,7 +219,7 @@
                                                 <div class="input-group mb-3">
                                                     <input id="agency_commission" type="text"
                                                         class="form-control @error('agency_commission') is-invalid @enderror"
-                                                        name="agency_commission" value="{{ $agency->agency_commission }}"
+                                                        name="agency_commission" value="{{ old('agency_commission') }}"
                                                         required autocomplete="agency_commission" placeholder=".00">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">%</span>
@@ -239,7 +239,7 @@
                                                 <div class="input-group mb-3">
                                                     <input id="vat" type="text"
                                                         class="form-control @error('vat') is-invalid @enderror"
-                                                        name="vat" value="{{ $agency->vat }}" required
+                                                        name="vat" value="{{ old('vat') }}" required
                                                         autocomplete="vat" placeholder=".00">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">%</span>
@@ -261,7 +261,7 @@
                                                 <div class="input-group mb-3">
                                                     <input id="supplementary_vat" type="text"
                                                         class="form-control @error('supplementary_vat') is-invalid @enderror"
-                                                        name="supplementary_vat" value="{{ $agency->supplementary_vat }}"
+                                                        name="supplementary_vat" value="{{ old('supplementary_vat') }}"
                                                         required autocomplete="supplementary_vat" placeholder=".00">
 
                                                     <div class="input-group-append">
@@ -330,7 +330,7 @@
                                     <div class="row mb-0 ">
                                         <div class="col-md-12 text-center">
                                             <button type="submit" class="btn btn-primary px-5">
-                                                Updated
+                                                Create
                                             </button>
                                         </div>
                                     </div>
