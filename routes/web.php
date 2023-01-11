@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\EstimationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/agency/edit/{agency}', [AgencyController::class, 'update']);
     // Route::post('/agency/edit/{agency}', [AgencyController::class, 'delete']);
     Route::get('/agency/view/{agency}', [AgencyController::class, 'show'])->name('agency.view');
+
+
+
+    // Estimation 
+    Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
+    Route::get('/estimation/create', [EstimationController::class, 'create'])->name('estimation.create');
+    Route::post('/estimation/create', [EstimationController::class, 'store']);
+    Route::get('/estimation/edit/{estimation}', [EstimationController::class, 'edit'])->name('estimation.edit');
+    Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'update']);
+    // Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'delete']);
+    Route::get('/estimation/view/{estimation}', [EstimationController::class, 'show'])->name('estimation.view');
 
 
 

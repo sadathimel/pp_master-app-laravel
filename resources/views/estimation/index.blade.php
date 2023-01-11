@@ -1,12 +1,13 @@
+
 @extends('layouts.layout')
 @section('title')
-    {{ 'Agency List' }}
+    {{ 'Estimation List' }}
 @endsection
 @section('content')
     <div class="card">
         <div class="card-header">
             <h1 class="display-5 d-inline "><b>Agency List</b></h1>
-            <a href="{{ route('agency.create') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit agencie">
+            <a href="{{ route('estimation.create') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit agencie">
                 <h5>Create New agency</h5>
             </a>
         </div>
@@ -25,7 +26,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($agencies as $agency)
+
+                        <h1>Estimation</h1>
+                        {{-- @foreach ($agencies as $agency)
                             <tr>
                                 <td>{{ $agency->id }}</td>
                                 <td>{{ $agency->name }}</td>
@@ -48,7 +51,7 @@
                                 </td>
 
                             </tr>
-                        @endforeach
+                        @endforeach --}}
                     </tbody>
                 </table>
             </div>

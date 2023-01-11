@@ -126,25 +126,25 @@
                                 <li class="nav-item">
                                     <a href="{{ route('agency') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Agencys List</p>
+                                        <p>Agency List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a href="{{route('estimation')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Flot</p>
+                                        <p>Estimation Details</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/charts/inline.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Inline</p>
+                                        <p>Bill Details</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/charts/uplot.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>uPlot</p>
+                                        {{-- <p>uPlot</p> --}}
                                     </a>
                                 </li>
                             </ul>
