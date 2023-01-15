@@ -53,7 +53,7 @@
 
                     <tr>
                         <th>Country</th>
-                        <td>{{ $agency->country }}</td>
+                        <td>{{ [1 => 'Bangledesh', 2 => 'Others'][$agency->country] }}</td>
                         <th>Agency Commission</th>
                         <td>{{ $agency->agency_commission }}</td>
                     </tr>
@@ -68,9 +68,11 @@
 
                     <tr>
                         <th>Vat On</th>
-                        <td>{{ $agency->vat_on }}</td>
+                        <td>{{ [1 => 'Gross', 2 => 'Net', 3 => 'Gross-Agency Commmission', 4 => 'Net-Agency Comission'][$agency->vat_on] }}
+                        </td>
                         <th>Commission On</th>
-                        <td>{{ $agency->commission_on }}</td>
+                        <td>{{ [1 => 'Gross', 2 => 'Net', 3 => 'Gross-Agency Commmission', 4 => 'Net-Agency Comission'][$agency->commission_on] }}
+                        </td>
                     </tr>
 
 
