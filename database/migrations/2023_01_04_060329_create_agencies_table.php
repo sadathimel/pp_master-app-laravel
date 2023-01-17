@@ -28,8 +28,8 @@ return new class extends Migration
             $table->float('agency_commission')->default(0.00);
             $table->float('vat')->default(0.00);
             $table->float('supplementary_vat')->default(0.00);
-            $table->tinyInteger('vat_on')->default(0);
-            $table->tinyInteger('commission_on')->default(0);
+            $table->tinyInteger('vat_on')->nullable();
+            $table->tinyInteger('commission_on')->nullable();
             $table->timestamps();
         });
     }

@@ -50,8 +50,8 @@ class AgencyController extends Controller
             'agency_commission' => 'required|numeric',
             'vat' => 'required|numeric',
             'supplementary_vat' => 'required|numeric',
-            'vat_on' => 'required|integer',
-            'commission_on' => 'required|integer',  
+            'vat_on' => 'nullable|integer',
+            'commission_on' => 'nullable|integer',  
         ]);
             
         $agency = new Agency();
@@ -110,12 +110,13 @@ class AgencyController extends Controller
      */
     public function update(Request $request, Agency $agency)
     {
+        // return $request;
         $request->validate([
             'name' => 'required|string|max:255',
-            'short_code' => 'required|string|max:255|unique:agencies,'.$agency->id,
+            'short_code' => 'required|string|max:255|unique:agencies,short_code,'.$agency->id,
             'agency_type' => 'required|integer',
             'contact_person' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:agencies,'.$agency->id,
+            'email' => 'required|string|email|max:255|unique:agencies,email,'.$agency->id,
             'phone' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -123,8 +124,8 @@ class AgencyController extends Controller
             'agency_commission' => 'required|numeric',
             'vat' => 'required|numeric',
             'supplementary_vat' => 'required|numeric',
-            'vat_on' => 'required|integer',
-            'commission_on' => 'required|integer',  
+            'vat_on' => 'nullable|integer',
+            'commission_on' => 'nullable|integer',  
         ]);
         $agency->name = $request->name;
         $agency->short_code = $request->short_code;
@@ -152,6 +153,8 @@ class AgencyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $agencies = Agency::find($id);
+        // $agencies->delete();
+        // return redirect()->route('agency');
     }
 }

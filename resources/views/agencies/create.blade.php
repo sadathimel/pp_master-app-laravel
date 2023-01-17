@@ -70,8 +70,12 @@
                                                     <select name="agency_type" class="form-control select2"
                                                         style="width: 100%;">
                                                         <option value="">Select Agency Type</option>
-                                                        <option value="1">Agency</option>
-                                                        <option value="2">Direct</option>
+                                                        <option value="1"
+                                                            {{ old('agency_type') === 1 ? 'selected' : '' }}>Agency
+                                                        </option>
+                                                        <option value="2"
+                                                            {{ old('agency_type') === 2 ? 'selected' : '' }}>Direct
+                                                        </option>
                                                     </select>
 
                                                     @error('agency_type')
@@ -190,8 +194,11 @@
                                                     <select name="country" class="form-control select2"
                                                         style="width: 100%;">
                                                         <option value="">Select Country</option>
-                                                        <option value="1">Bangladesh</option>
-                                                        <option value="2">Others</option>
+                                                        <option value="1"
+                                                            {{ old('country' === 1 ? 'selected' : '') }}>Bangladesh
+                                                        </option>
+                                                        <option value="2"
+                                                            {{ old('country' === 2 ? 'selected' : '') }}>Others</option>
                                                     </select>
 
                                                     @error('country')
@@ -281,11 +288,17 @@
                                                 <div class="">
                                                     <select name="vat_on" class="form-control select2"
                                                         style="width: 100%;">
-                                                        <option value="">Select Vat on</option>
-                                                        <option value="1">Gross</option>
-                                                        <option value="2">Net</option>
-                                                        <option value="3">Gross-Agency Commission</option>
-                                                        <option value="4">Net-Agency Commission</option>
+                                                        <option>Select</option>
+                                                        <option value="1"
+                                                            {{ old('vat_on' === 1 ? 'selected' : '') }}>Gross</option>
+                                                        <option value="2"
+                                                            {{ old('vat_on' === 2 ? 'selected' : '') }}>Net</option>
+                                                        <option value="3"
+                                                            {{ old('vat_on' === 3 ? 'selected' : '') }}>Gross-Agency
+                                                            Commission</option>
+                                                        <option value="4"
+                                                            {{ old('vat_on' === 4 ? 'selected' : '') }}>Net-Agency
+                                                            Commission</option>
                                                     </select>
 
                                                     @error('vat_on')
@@ -304,11 +317,17 @@
                                                 <div class="">
                                                     <select name="commission_on" class="form-control select2"
                                                         style="width: 100%;">
-                                                        <option value="">Select Vat on</option>
-                                                        <option value="1">Gross</option>
-                                                        <option value="2">Net</option>
-                                                        <option value="3">Gross-Agency Commission</option>
-                                                        <option value="4">Net-Agency Commission</option>
+                                                        <option>Select</option>
+                                                        <option value="1"
+                                                            {{ old('vat_on' === 1 ? 'selected' : '') }}>Gross</option>
+                                                        <option value="2"
+                                                            {{ old('vat_on' === 2 ? 'selected' : '') }}>Net</option>
+                                                        <option value="3"
+                                                            {{ old('vat_on' === 3 ? 'selected' : '') }}>Gross-Agency
+                                                            Commission</option>
+                                                        <option value="4"
+                                                            {{ old('vat_on' === 4 ? 'selected' : '') }}>Net-Agency
+                                                            Commission</option>
                                                     </select>
 
                                                     @error('commission_on')

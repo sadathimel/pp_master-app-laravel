@@ -40,9 +40,9 @@
                                         class="btn btn-primary btn-sm" title="Edit Agency">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-sm" title="Delete Agency">
+                                    {{-- <a href="#" class="btn btn-danger btn-sm" title="Delete Agency">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Delete
-                                    </a>
+                                    </a> --}}
 
 
                                 </td>

@@ -3,7 +3,7 @@
     {{-- @extends('layouts.app') --}}
     <div class="card">
         <div class="card-header">
-            <h1 class="text-red display-5 px-2 py-2 bg-purple text-center d-block rounded">Create New Estimation</h1>
+            <h1 class="text-red display-5 px-2 py-2 bg-purple text-center d-block rounded">Add Estimation</h1>
             <a href="{{ route('estimation') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="estimation list">
                 <h5>Estimation List</h5>
             </a>
@@ -23,43 +23,43 @@
                                     enctype="multipart/form-data">
                                     @csrf
 
+
+
                                     <div class="row mb-3">
 
                                         <div class="col-md-4">
-                                            <div class="mb-4">
-                                                <label for="agency_type" class="col-form-label text-md-end">Agency
-                                                    Type</label>
-
-                                                <div class="">
-                                                    <select name="agency_name" class="form-control select2"
-                                                        style="width: 100%;">
-                                                        <option value="">Select Agency Type</option>
-                                                        @foreach ($agency_names as $id => $name)
-                                                            <option value="{{ $id }}">{{ $name }}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                    </select>
-
-                                                    @error('agency_type')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                            <!-- Date and time -->
+                                            <div class="form-group">
+                                                <label>Estimation Date</label>
+                                                <div class="input-group date" id="estimation_date"
+                                                    data-target-input="nearest">
+                                                    <input name="estimation_date" type="text"
+                                                        class="form-control datetimepicker-input"
+                                                        data-target="#estimation_date" required />
+                                                    <div class="input-group-append" data-target="#estimation_date"
+                                                        data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="row mb-3">
 
                                         <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Agency Name</label>
+                                                <select name="agency_type" class="form-control select2" style="width: 100%;"
+                                                    required>
+                                                    <option disabled selected>Select</option>
+                                                    @foreach ($agency_names as $id => $name)
+                                                        <option value="{{ $id }}">{{ $name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
 
-                                            <label for="name" class=" col-form-label text-md-end">Agency Name</label>
-                                            <div class="">
-                                                <input id="name" type="text"
-                                                    class="form-control @error('name') is-invalid @enderror" name="name"
-                                                    value="{{ old('name') }}" required autocomplete="name" autofocus
-                                                    placeholder="Enter Agency Name">
-
-                                                @error('name')
+                                                @error('agency_type')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -68,20 +68,35 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class=" mb-4">
-                                                <label for="short_code" class="col-form-label text-md-end">Agency Short
-                                                    Code</label>
-                                                <div class="">
-                                                    <input id="short_code" type="text"
-                                                        class="form-control @error('short_code') is-invalid @enderror"
-                                                        name="short_code" value="{{ old('short_code') }}" required
-                                                        autocomplete="short_code" placeholder="Enter short code">
+                                            <!-- Date and time -->
+                                            <div class="form-group">
+                                                <label>Period Start</label>
+                                                <div class="input-group date" id="reservationdate"
+                                                    data-target-input="nearest">
+                                                    <input name="period_start" type="text"
+                                                        class="form-control datetimepicker-input"
+                                                        data-target="#reservationdate" required />
+                                                    <div class="input-group-append" data-target="#reservationdate"
+                                                        data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                                    @error('short_code')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                        <div class="col-md-4">
+                                            <!-- Date and time -->
+                                            <div class="form-group">
+                                                <label>Period End</label>
+                                                <div class="input-group date" id="reservationdatetwo"
+                                                    data-target-input="nearest">
+                                                    <input name="period_end" type="text"
+                                                        class="form-control datetimepicker-input"
+                                                        data-target="#reservationdatetwo" required />
+                                                    <div class="input-group-append" data-target="#reservationdatetwo"
+                                                        data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,14 +108,13 @@
 
                                         <div class="col-md-4">
 
-                                            <label for="contact_person" class=" col-form-label text-md-end">Contact
-                                                Person Name</label>
+                                            <label for="estimation_id" class=" col-form-label text-md-end">Estimation
+                                                ID:</label>
                                             <div class="">
                                                 <input id="contact_person" type="text"
                                                     class="form-control @error('contact_person') is-invalid @enderror"
-                                                    name="contact_person" value="{{ old('contact_person') }}" required
-                                                    autocomplete="contact_person" autofocus
-                                                    placeholder="Enter Contact Person Name">
+                                                    name="estimation_id" value="{{ old('estimation_id') }}" required
+                                                    autocomplete="estimation_id" autofocus disabled>
 
                                                 @error('contact_person')
                                                     <span class="invalid-feedback" role="alert">
@@ -111,27 +125,28 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class=" mb-4">
-                                                <label for="email" class="col-form-label text-md-end">Email
-                                                    address</label>
-                                                <div class="">
-                                                    <input id="email" type="email"
-                                                        class="form-control @error('email') is-invalid @enderror"
-                                                        name="email" value="{{ old('email') }}" required
-                                                        autocomplete="email" placeholder="Enter Email">
 
-                                                    @error('email')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
+                                            <label for="campaign_name" class="col-form-label text-md-end">Campaign
+                                                Name</label>
+                                            <div class="">
+                                                <input id="campaign_name" type="text"
+                                                    class="form-control @error('campaign_name') is-invalid @enderror"
+                                                    name="campaign_name" value="{{ old('campaign_name') }}" required
+                                                    autocomplete="campaign_name" placeholder="Enter campaign name">
+
+                                                @error('campaign_name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
+
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="mb-4">
-                                                <label for="phone" class="col-form-label text-md-end">Phone No</label>
+                                                <label for="phone" class="col-form-label text-md-end">Phone
+                                                    No</label>
 
                                                 <div class="">
                                                     <input id="phone" type="phone"
@@ -281,7 +296,8 @@
                                     <div class="row mb-4">
                                         <div class="col-md-4">
                                             <div class="mb-4">
-                                                <label for="vat_on" class="col-form-label text-md-end">Vat on</label>
+                                                <label for="vat_on" class="col-form-label text-md-end">Vat
+                                                    on</label>
 
                                                 <div class="">
                                                     <select name="vat_on" class="form-control select2"

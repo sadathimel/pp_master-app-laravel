@@ -130,7 +130,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('estimation')}}" class="nav-link">
+                                    <a href="{{ route('estimation') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Estimation Details</p>
                                     </a>
@@ -232,6 +232,7 @@
     <script src="{{ asset('backend/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
     <!-- daterangepicker -->
     <script src="{{ asset('backend/plugins/moment/moment.min.js') }}"></script>
+
     <script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
@@ -312,6 +313,42 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+
+
+            //Date picker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+            //Date picker
+            $('#reservationdatetwo').datetimepicker({
+                format: 'L'
+            });
+            $('#estimation_date').datetimepicker({
+                format: 'L'
+            });
+
+            //Date and time picker
+
+
+
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                }
+            })
+
+
+        });
+    </script>
+
 </body>
 
 </html>

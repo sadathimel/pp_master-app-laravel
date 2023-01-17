@@ -68,11 +68,34 @@
 
                     <tr>
                         <th>Vat On</th>
-                        <td>{{ [1 => 'Gross', 2 => 'Net', 3 => 'Gross-Agency Commmission', 4 => 'Net-Agency Comission'][$agency->vat_on] }}
+                        <td>
+
+                            @if ($agency->vat_on == 1)
+                                Gross
+                            @elseif($agency->vat_on == 2)
+                                Net
+                            @elseif($agency->vat_on == 3)
+                                Gross-Agency Commmission
+                            @elseif($agency->vat_on == 4)
+                                Net-Agency Comission
+                            @else
+                            @endif
+
                         </td>
+
                         <th>Commission On</th>
-                        <td>{{ [1 => 'Gross', 2 => 'Net', 3 => 'Gross-Agency Commmission', 4 => 'Net-Agency Comission'][$agency->commission_on] }}
-                        </td>
+                        {{-- <td>{{ [1 => 'Gross', 2 => 'Net', 3 => 'Gross-Agency Commmission', 4 => 'Net-Agency Comission'][$agency->commission_on] }} --}}
+                        {{-- </td> --}}
+                        @if ($agency->commission_on == 1)
+                            Gross
+                        @elseif($agency->commission_on == 2)
+                            Net
+                        @elseif($agency->commission_on == 3)
+                            Gross-Agency Commmission
+                        @elseif($agency->commission_on == 4)
+                            Net-Agency Comission
+                        @else
+                        @endif
                     </tr>
 
 

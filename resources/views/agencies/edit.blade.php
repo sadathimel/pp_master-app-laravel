@@ -34,8 +34,8 @@
                                             <div class="">
                                                 <input id="name" type="text"
                                                     class="form-control @error('name') is-invalid @enderror" name="name"
-                                                    value="{{ $agency->name }}" required autocomplete="name" autofocus
-                                                    placeholder="Enter Agency Name">
+                                                    value="{{ old('name') ?? $agency->name }}" required autocomplete="name"
+                                                    autofocus placeholder="Enter Agency Name">
 
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +52,8 @@
                                                 <div class="">
                                                     <input id="short_code" type="text"
                                                         class="form-control @error('short_code') is-invalid @enderror"
-                                                        name="short_code" value="{{ $agency->short_code }}" required
+                                                        name="short_code"
+                                                        value="{{ old('short_code') ?? $agency->short_code }}" required
                                                         autocomplete="short_code" placeholder="Enter short code">
 
                                                     @error('short_code')
@@ -71,12 +72,17 @@
 
                                                 <div class="">
 
-
                                                     <select name="agency_type" class="form-control select2"
                                                         style="width: 100%;">
-                                                        <option value="">Select Agency Type</option>
-                                                        <option value="1">Agency</option>
-                                                        <option value="2">Direct</option>
+                                                        <option value="1"
+                                                            {{ empty(old('agency_type')) ? ($errors->has('agency_type') ? '' : ($agency->agency_type == 1 ? 'selected' : '')) : (old('agency_type') === 1 ? 'selected' : '') }}>
+                                                            Agency
+                                                        </option>
+
+                                                        <option value="2"
+                                                            {{ empty(old('agency_type')) ? ($errors->has('agency_type') ? '' : ($agency->agency_type == 2 ? 'selected' : '')) : (old('agency_type') === 2 ? 'selected' : '') }}>
+                                                            Direct
+                                                        </option>
                                                     </select>
 
                                                     @error('agency_type')
@@ -195,8 +201,18 @@
                                                     <select name="country" class="form-control select2"
                                                         style="width: 100%;">
                                                         <option value="">Select Country</option>
-                                                        <option value="1">Bangladesh</option>
-                                                        <option value="2">Others</option>
+                                                        <option value="1"
+                                                            {{ empty(old('country')) ? ($errors->has('country') ? '' : ($agency->country == 1 ? 'selected' : '')) : (old('country') === 1 ? 'selected' : '') }}>
+                                                            Bangladesh
+
+                                                        </option>
+                                                        <option value="2"
+                                                            {{ $agency->country == 2 ? 'selected' : '' }}>
+
+
+                                                            {{ empty(old('country')) ? $errors->has('country' ? '' : ($agency->country === 2 ? 'selected' : '')) : (old('country') === 2 ? 'selectted' : '') }}
+
+                                                            Others</option>
                                                     </select>
 
                                                     @error('country')
@@ -286,11 +302,28 @@
                                                 <div class="">
                                                     <select name="vat_on" class="form-control select2"
                                                         style="width: 100%;">
-                                                        <option value="">Select Vat on</option>
-                                                        <option value="1">Gross</option>
-                                                        <option value="2">Net</option>
-                                                        <option value="3">Gross-Agency Commission</option>
-                                                        <option value="4">Net-Agency Commission</option>
+                                                        <option value="">Select</option>
+
+                                                        <option value="1"
+                                                            {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 1 ? 'selected' : '')) : (old('vat_on') === 1 ? 'selected' : '') }}>
+                                                            Gross
+                                                        </option>
+
+                                                        <option value="2"
+                                                            {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 2 ? 'selected' : '')) : (old('vat_on') === 2 ? 'selected' : '') }}>
+                                                            Net
+                                                        </option>
+
+                                                        <option value="3"
+                                                            {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 3 ? 'selected' : '')) : (old('vat_on') === 3 ? 'selected' : '') }}>
+                                                            Gross-Agency Commission
+                                                        </option>
+
+                                                        <option value="4"
+                                                            {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 4 ? 'selected' : '')) : (old('vat_on') === 4 ? 'selected' : '') }}>
+                                                            Net-Agency Commission
+                                                        </option>
+
                                                     </select>
 
                                                     @error('vat_on')
@@ -309,11 +342,27 @@
                                                 <div class="">
                                                     <select name="commission_on" class="form-control select2"
                                                         style="width: 100%;">
-                                                        <option value="">Select Vat on</option>
-                                                        <option value="1">Gross</option>
-                                                        <option value="2">Net</option>
-                                                        <option value="3">Gross-Agency Commission</option>
-                                                        <option value="4">Net-Agency Commission</option>
+                                                        <option value="">Select</option>
+
+                                                        <option value="1"
+                                                            {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 1 ? 'selected' : '')) : (old('commission_on') === 1 ? 'selected' : '') }}>
+                                                            Gross
+                                                        </option>
+
+                                                        <option value="2"
+                                                            {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 2 ? 'selected' : '')) : (old('commission_on') === 2 ? 'selected' : '') }}>
+                                                            Net
+                                                        </option>
+
+                                                        <option value="3"
+                                                            {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 3 ? 'selected' : '')) : (old('commission_on') === 3 ? 'selected' : '') }}>
+                                                            Gross-Agency Commission
+                                                        </option>
+
+                                                        <option value="4"
+                                                            {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 4 ? 'selected' : '')) : (old('commission_on') === 4 ? 'selected' : '') }}>
+                                                            Net-Agency Commission
+                                                        </option>
                                                     </select>
 
                                                     @error('commission_on')
