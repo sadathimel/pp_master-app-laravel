@@ -18,6 +18,8 @@
         href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+
+
     <!-- JQVMap -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
@@ -219,6 +221,8 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
+
+
     <!-- Bootstrap 4 -->
     <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- ChartJS -->
@@ -293,7 +297,7 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
         $(function() {
 
             $("#viewexample1").DataTable({
@@ -312,7 +316,7 @@
                 "responsive": true,
             });
         });
-    </script>
+    </script> --}}
 
     <script>
         $(document).ready(function() {

@@ -1,4 +1,3 @@
-
 @extends('layouts.layout')
 @section('title')
     {{ 'Estimation List' }}
@@ -7,9 +6,19 @@
     <div class="card">
         <div class="card-header">
             <h1 class="display-5 d-inline "><b>Estimation List</b></h1>
-            <a href="{{ route('estimation.create') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit agencie">
+            <a href="{{ route('estimation.create') }}" class="btn btn-primary btn-sm float-right px-3 py-2"
+                title="Edit agencie">
                 <h5>Add Estimation</h5>
             </a>
+
+
+
+            {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                Launch Default Modal
+            </button> --}}
+
+
+
         </div>
         <!-- /.card-header -->
         <div class="card-body">
