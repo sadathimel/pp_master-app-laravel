@@ -31,6 +31,7 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
 
+    @yield('style')
 
 </head>
 
@@ -297,62 +298,8 @@
             });
         });
     </script>
-    {{-- <script>
-        $(function() {
 
-            $("#viewexample1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["csv", "excel", "pdf", "print"]
-            }).buttons().container().appendTo('#viewexample1_wrapper .col-md-6:eq(0)');
-            $('#viewexample2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script> --}}
-
-    <script>
-        $(document).ready(function() {
-
-
-            //Date picker
-            $('#reservationdate').datetimepicker({
-                format: 'L'
-            });
-            //Date picker
-            $('#reservationdatetwo').datetimepicker({
-                format: 'L'
-            });
-            $('#estimation_date').datetimepicker({
-                format: 'L'
-            });
-
-            //Date and time picker
-
-
-
-            //Date range picker
-            $('#reservation').daterangepicker()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'MM/DD/YYYY hh:mm A'
-                }
-            })
-
-
-        });
-    </script>
-
+    @yield('script')
 </body>
 
 </html>
