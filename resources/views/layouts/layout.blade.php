@@ -153,6 +153,17 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link">
+                                <i class="nav-icon fa fa-file"></i>
+                                <p>
+                                    Reportes
+
+                                </p>
+                            </a>
+
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

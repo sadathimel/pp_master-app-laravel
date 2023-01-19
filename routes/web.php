@@ -53,10 +53,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/estimation/edit/{estimation}', [EstimationController::class, 'edit'])->name('estimation.edit');
     Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'update']);
     // Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'delete']);
-    Route::get('/estimation/view/{estimation}', [EstimationController::class, 'show'])->name('estimation.view');
+    Route::get('/estimation/view/{estimation}', [EstimationController::class, 'show'])->name('estimation.view'); 
 
 
 
-
+// Report
+Route::get('/report', [EstimationController::class, 'report'])->name('report');
 
 });

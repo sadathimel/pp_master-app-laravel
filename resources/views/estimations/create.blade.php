@@ -1,6 +1,5 @@
 @extends('layouts.layout')
 @section('style')
-
 @endsection
 @section('content')
     {{-- @extends('layouts.app') --}}
@@ -141,8 +140,8 @@
                                     <div class="mt-3">
                                         <label for="address" class="col-form-label text-md-end"></label>
                                         <div class="row">
-                                            <div class="col-md-12 text-center" id="add_estimation">
-                                                <button class="btn btn-primary px-5">
+                                            <div class="col-md-12 text-center" id="">
+                                                <button class="btn btn-primary px-5" id="add_estimation">
                                                     +Add Estimation
                                                 </button>
                                             </div>
@@ -168,6 +167,7 @@
                                     <tbody>
 
                                         <tr>
+
                                             <td>
                                                 <button type="submit" class="btn btn-danger px-3">
                                                     Delete
@@ -200,10 +200,10 @@
                                                         name="campaign_name" value="{{ old('campaign_name') }}" required
                                                         autocomplete="campaign_name"
                                                         @error('campaign_name')>
-                                                                                        <span class="invalid-feedback" role="alert">
-                                                                                            <strong>{{ $message }}</strong>
-                                                                                        </span>
-                                                                                    @enderror
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                         </div>
                                             </td>
                                             <td>
@@ -213,10 +213,10 @@
                                                         name="campaign_name" value="{{ old('campaign_name') }}" required
                                                         autocomplete="campaign_name"
                                                         @error('campaign_name')>
-                                                                                        <span class="invalid-feedback" role="alert">
-                                                                                            <strong>{{ $message }}</strong>
-                                                                                        </span>
-                                                                                    @enderror
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                         </div>
                                             </td>
                                             <td>
@@ -225,16 +225,85 @@
                                                         class="form-control @error('campaign_name') is-invalid @enderror"
                                                         name="campaign_name" value="{{ old('campaign_name') }}" required
                                                         autocomplete="campaign_name"
-                                                        @error('campaign_name')
-                                                                                    >
-                                                                                        <span class="invalid-feedback" role="alert">
-                                                                                            <strong>{{ $message }}</strong>
-                                                                                        </span>
-                                                                                        @enderror
+                                                        @error('campaign_name') >
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
                                                         </div>
                                             </td>
+                                            
                                         </tr>
-
+                                        
+                                        <div class="add_field" id="add_field">
+                                            <tr>
+                                                <td>
+                                                        <button type="submit" class="btn btn-danger px-3">
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <select name="agency_type" class="form-control select2"
+                                                                    required>
+                                                                    <option disabled selected>Select</option>
+                                                                    @foreach ($agency_names as $id => $name)
+                                                                        <option value="{{ $id }}">
+                                                                            {{ $name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+    
+                                                                @error('agency_type')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <input id="campaign_name" type="text"
+                                                                class="form-control @error('campaign_name') is-invalid @enderror"
+                                                                name="campaign_name" value="{{ old('campaign_name') }}"
+                                                                required autocomplete="campaign_name"
+                                                                @error('campaign_name')>
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                                </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <input id="campaign_name" type="number"
+                                                                class="form-control @error('campaign_name') is-invalid @enderror"
+                                                                name="campaign_name" value="{{ old('campaign_name') }}"
+                                                                required autocomplete="campaign_name"
+                                                                @error('campaign_name')>
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                                </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            <input id="campaign_name" type="number"
+                                                                class="form-control @error('campaign_name') is-invalid @enderror"
+                                                                name="campaign_name" value="{{ old('campaign_name') }}"
+                                                                required autocomplete="campaign_name"
+                                                                @error('campaign_name') >
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                                </div>
+                                                    </td>
+                                                </tr>
+                                        </div>
                                     </tbody>
                                 </table>
                             </div>
@@ -581,7 +650,77 @@
                 format: 'L'
             });
 
-            //Date and time picker
+
+            $('#add_estimation').click(function(e) {
+                e.preventDefault();
+                // $('#add_field').append(`<tr>
+                //                             <td>
+                //                                     <button type="submit" class="btn btn-danger px-3">
+                //                                         Delete
+                //                                     </button>
+                //                                 </td>
+                //                                 <td>
+                //                                     <div class="">
+                //                                         <div class="form-group">
+                //                                             <select name="agency_type" class="form-control select2"
+                //                                                 required>
+                //                                                 <option disabled selected>Select</option>
+                //                                                 @foreach ($agency_names as $id => $name)
+                //                                                     <option value="{{ $id }}">
+                //                                                         {{ $name }}
+                //                                                     </option>
+                //                                                 @endforeach
+                //                                             </select>
+
+                //                                             @error('agency_type')
+                //                                                 <span class="invalid-feedback" role="alert">
+                //                                                     <strong>{{ $message }}</strong>
+                //                                                 </span>
+                //                                             @enderror
+                //                                         </div>
+                //                                     </div>
+                //                                 </td>
+                //                                 <td>
+                //                                     <div class="">
+                //                                         <input id="campaign_name" type="text"
+                //                                             class="form-control @error('campaign_name') is-invalid @enderror"
+                //                                             name="campaign_name" value="{{ old('campaign_name') }}"
+                //                                             required autocomplete="campaign_name"
+                //                                             @error('campaign_name')>
+                //                                             <span class="invalid-feedback" role="alert">
+                //                                                 <strong>{{ $message }}</strong>
+                //                                             </span>
+                //                                         @enderror
+                //                                             </div>
+                //                                 </td>
+                //                                 <td>
+                //                                     <div class="">
+                //                                         <input id="campaign_name" type="number"
+                //                                             class="form-control @error('campaign_name') is-invalid @enderror"
+                //                                             name="campaign_name" value="{{ old('campaign_name') }}"
+                //                                             required autocomplete="campaign_name"
+                //                                             @error('campaign_name')>
+                //                                             <span class="invalid-feedback" role="alert">
+                //                                                 <strong>{{ $message }}</strong>
+                //                                             </span>
+                //                                         @enderror
+                //                                             </div>
+                //                                 </td>
+                //                                 <td>
+                //                                     <div class="">
+                //                                         <input id="campaign_name" type="number"
+                //                                             class="form-control @error('campaign_name') is-invalid @enderror"
+                //                                             name="campaign_name" value="{{ old('campaign_name') }}"
+                //                                             required autocomplete="campaign_name"
+                //                                             @error('campaign_name') >
+                //                                         <span class="invalid-feedback" role="alert">
+                //                                             <strong>{{ $message }}</strong>
+                //                                         </span>
+                //                                         @enderror
+                //                                             </div>
+                //                                 </td>
+                //                             </tr>`);
+            });
 
         });
     </script>
