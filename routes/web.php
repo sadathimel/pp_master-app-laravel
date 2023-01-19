@@ -49,11 +49,11 @@ Route::middleware('auth')->group(function () {
     // Estimation 
     Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
     Route::get('/estimation/create', [EstimationController::class, 'create'])->name('estimation.create');
-    Route::post('/estimation/create', [EstimationController::class, 'store']);
-    Route::get('/estimation/edit/{estimation}', [EstimationController::class, 'edit'])->name('estimation.edit');
-    Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'update']);
+    // Route::post('/estimation/create', [EstimationController::class, 'store']);
+    // Route::get('/estimation/edit/{estimation}', [EstimationController::class, 'edit'])->name('estimation.edit');
+    // Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'update']);
     // Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'delete']);
-    Route::get('/estimation/view/{estimation}', [EstimationController::class, 'show'])->name('estimation.view'); 
+    // Route::get('/estimation/view/{estimation}', [EstimationController::class, 'show'])->name('estimation.view'); 
 
 
 
