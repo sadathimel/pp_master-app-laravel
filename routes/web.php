@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\EstimationController;
@@ -58,6 +59,7 @@ Route::middleware('auth')->group(function () {
 
 
 // Report
-Route::get('/report', [EstimationController::class, 'report'])->name('report');
+Route::get('/report', [SellController::class, 'index'])->name('report');
+Route::get('/report/create', [SellController::class, 'create'])->name('report.create');
 
 });

@@ -1,13 +1,13 @@
 @extends('layouts.layout')
 @section('title')
-    {{ 'Agency List' }}
+    {{ 'Billing file' }}
 @endsection
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h1 class="display-5 d-inline "><b>Agency List</b></h1>
-            <a href="{{ route('agency.create') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit agencie">
-                <h5>Create New agency</h5>
+            <h1 class="display-5 d-inline "><b>Billing Master File</b></h1>
+            <a href="{{ route('report.create') }}" class="btn btn-primary btn-sm float-right px-3 py-2" title="Edit agencie">
+                <h5>Create</h5>
             </a>
         </div>
         <!-- /.card-header -->

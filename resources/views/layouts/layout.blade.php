@@ -50,7 +50,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto ">
 
-                <div class="btn-group">
+                <div class="btn-group btn-group-toggle">
                     <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"
                         data-offset="-52">
                         <i class="fas fa-bars"></i>
@@ -96,16 +96,16 @@
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar ">
                 <!-- Sidebar user panel (optional) -->
 
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column btn-group-toggle" data-widget="treeview"
+                        role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                            with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -154,7 +154,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('report') }}" class="nav-link">
+                            <a href="{{ route('report') }}" class="nav-link ">
                                 <i class="nav-icon fa fa-file"></i>
                                 <p>
                                     Reportes
@@ -291,6 +291,7 @@
 
     <script>
         $(function() {
+            // $().button('toggle');
 
             $("#example1").DataTable({
                 "responsive": true,

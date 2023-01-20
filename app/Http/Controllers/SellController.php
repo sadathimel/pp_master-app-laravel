@@ -6,21 +6,13 @@ use Illuminate\Http\Request;
 
 class SellController extends Controller
 {
-    public function report()
+    public function index()
     {
-        $reports = Report::all();
-        return view('reports.index', compact('reports'));
+        return view('reports.index');
     }
 
-    
     public function create()
     {
-        return view('users.create');
-    }
-
-    public function edit(reports $reports)
-    {
-
-        return view('users.edit', compact('user'));
+        return view('reports.create');
     }
 }
