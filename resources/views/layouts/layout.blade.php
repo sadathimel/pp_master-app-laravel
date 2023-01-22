@@ -19,7 +19,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
 
-
+    @yield('header_script')
     <!-- JQVMap -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
 
     @yield('style')
+
+    {{-- @yield('header_script') --}}
 
 </head>
 
@@ -287,31 +289,13 @@
     <!-- Page specific script -->
 
 
+    @yield('secript_esti')
 
 
-    <script>
-        $(function() {
-            // $().button('toggle');
 
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
-
+    @yield('script_agency')
     @yield('script')
+    @yield('script_reports')
 </body>
 
 </html>
