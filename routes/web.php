@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\EstimationController;
 
 /*
@@ -55,6 +56,15 @@ Route::middleware('auth')->group(function () {
     // Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'update']);
     // Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'delete']);
     // Route::get('/estimation/view/{estimation}', [EstimationController::class, 'show'])->name('estimation.view'); 
+    
+    // Bill 
+    Route::get('/bill', [BillController::class, 'index'])->name('bill');
+    Route::get('/bill/create', [BillController::class, 'create'])->name('bill.create');
+    // Route::post('/bill/create', [BillController::class, 'store']);
+    // Route::get('/bill/edit/{Bill}', [BillController::class, 'edit'])->name('bill.edit');
+    // Route::post('/bill/edit/{Bill}', [BillController::class, 'update']);
+    // Route::post('/bill/edit/{Bill}', [BillController::class, 'delete']);
+    // Route::get('/bill/view/{Bill}', [BillController::class, 'show'])->name('bill.view'); 
 
 
 
