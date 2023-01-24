@@ -5,6 +5,7 @@ use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\CommonController;
 use App\Http\Controllers\EstimationController;
 
 /*
@@ -46,7 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/agency/delete/{agency}', [AgencyController::class, 'destroy']);
     Route::get('/agency/view/{agency}', [AgencyController::class, 'show'])->name('agency.view');
 
-
+// job
+Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
 
     // Estimation 
     Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
@@ -73,3 +75,6 @@ Route::get('/report', [SellController::class, 'index'])->name('report');
 Route::get('/report/create', [SellController::class, 'create'])->name('report.create');
 
 });
+
+Route::get('get-job-heads', [CommonController::class, 'getJobHeads']);
+Route::get('get-agencyDetails', [CommonController::class, 'getAgencies']);

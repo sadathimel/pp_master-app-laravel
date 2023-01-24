@@ -40,7 +40,7 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <nav class="main-header navbar navbar-expand navbar-white bg-purple navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -87,7 +87,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-white bg-purple elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('user.edit', ['user' => Auth::user()->id]) }}" class="brand-link">
                 {{-- @if (Auth::user()->image) --}}
@@ -123,7 +123,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
-                                    Agency
+                                    Client
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -131,7 +131,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('agency') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Agency List</p>
+                                        <p>Client List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

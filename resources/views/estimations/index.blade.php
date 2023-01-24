@@ -103,12 +103,11 @@
 
                 </tbody>
 
-
-
-
             </table>
         </div>
     </div>
+
+    {{-- modal --}}
     <div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="bill" aria-hidden="true">
         <div style="max-width: 1024px" class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -119,183 +118,189 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <select id="publisherUserName" name="publisherUserName" class="form-control">
-                                <option value="-1">Agencies</option>
-                                <option value="28">Mediacom Limited</option>
-                                <option value="29">
-                                    Starcom Bangladesh (Activate Media Solutions).
-                                </option>
-                                <option value="30">Melonades</option>
-                                <option value="31">Starcom Bangladesh</option>
-                                <option value="32">Jarvis Digital Limited</option>
-                                <option value="33">
-                                    Starcom Bangladesh (Activate Media Solutions)
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group row">
-                                <label for="periodStart" class="col-sm-5 col-form-label col-form-label-sm">Period
-                                    Start</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control form-control-sm" id="periodStart" />
+                    <form action="">
+
+
+                        <div class="row">
+                            <div class="col-4">
+                                <select id="publisherUserName" name="publisherUserName" class="form-control">
+                                    <option value="-1">Select Agencies</option>
+                                    @foreach ($agencies as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+
+
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group row">
+                                    <label for="periodStart" class="col-sm-5 col-form-label col-form-label-sm">Period
+                                        Start</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm" id="periodStart" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group row">
+                                    <label for="periodEnd" class="col-sm-5 col-form-label col-form-label-sm">Period
+                                        End</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm" id="periodEnd" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="form-group row">
-                                <label for="periodEnd" class="col-sm-5 col-form-label col-form-label-sm">Period
-                                    End</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control form-control-sm" id="periodEnd" />
+
+
+                        <div class="row">
+                            <div class="col-3">
+                                <span id="payoutId">Estimation ID: Not yet generated</span>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group row">
+                                    <label for="cName" class="col-sm-5 col-form-label col-form-label-sm">Campaign
+                                        Name</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control form-control-sm" id="cName" />
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-3">
+                                <div class="form-group row">
+                                    <label for="PayoutDate" class="col-sm-7 col-form-label col-form-label-sm">Estimation
+                                        Date</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control form-control-sm" id="PayoutDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <button id="addBill" type="button" class="btn btn-primary btn-sm">
+                                    + Add Estimation
+                                </button>
+                            </div>
+                            <div class="col-12">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center" scope="col">-</th>
+                                            <th>Job Head</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Impression-Clicks-Views-Lead</th>
+                                            <th scope="col">Gross Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tableBody payBody"></tbody>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="modal_vatOn" class="col-sm-6 col-form-label col-form-label-sm">Vat
+                                        Applies on</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-sm" id="modal_vatOn"
+                                            placeholder="" />
+                                        <input readonly type="hidden" class="form-control form-control-sm"
+                                            id="modal_vatOn_hidden" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="modal_commOn" class="col-sm-6 col-form-label col-form-label-sm">Agency
+                                        Comm. Applies on</label>
+                                    <div class="col-sm-6">
+                                        <input readonly type="text" class="form-control form-control-sm"
+                                            id="modal_commOn" placeholder="" />
+                                        <input readonly type="hidden" class="form-control form-control-sm"
+                                            id="modal_commOn_hidden" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="modal_grossAmount" class="col-sm-6 col-form-label col-form-label-sm">Gross
+                                        Amount</label>
+                                    <div class="col-sm-6">
+                                        <input readonly type="text" class="form-control form-control-sm"
+                                            id="modal_grossAmount" placeholder="0" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="modal_discount" class="col-sm-6 col-form-label col-form-label-sm">Discount
+                                        Amount</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-sm" id="modal_discount"
+                                            placeholder="0" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="modal_net" class="col-sm-6 col-form-label col-form-label-sm">Net
+                                        Amount</label>
+                                    <div class="col-sm-6">
+                                        <input readonly type="text" class="form-control form-control-sm"
+                                            id="modal_net" placeholder="0" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="modal_ait" class="col-sm-6 col-form-label col-form-label-sm">Agency
+                                        Comm</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-sm" id="modal_ait"
+                                            placeholder="0" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="modal_aitAmount" class="col-sm-6 col-form-label col-form-label-sm">Agency
+                                        Comm
+                                        Amount</label>
+                                    <div class="col-sm-6">
+                                        <input readonly type="text" class="form-control form-control-sm"
+                                            id="modal_aitAmount" placeholder="0.00" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="modal_vat" class="col-sm-6 col-form-label col-form-label-sm">Vat</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-sm" id="modal_vat"
+                                            placeholder="0" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="modal_vatAmount" class="col-sm-6 col-form-label col-form-label-sm">Vat
+                                        Amount</label>
+                                    <div class="col-sm-6">
+                                        <input readonly type="text" class="form-control form-control-sm"
+                                            id="modal_vatAmount" placeholder="0.00" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="modal_gt" class="col-sm-6 col-form-label col-form-label-sm">Grand
+                                        Total</label>
+                                    <div class="col-sm-6">
+                                        <input readonly type="text" class="form-control form-control-sm"
+                                            id="modal_gt" placeholder="0" />
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">
-                            <span id="payoutId">Estimation ID: Not yet generated</span>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group row">
-                                <label for="cName" class="col-sm-5 col-form-label col-form-label-sm">Campaign
-                                    Name</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control form-control-sm" id="cName" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group row">
-                                <label for="PayoutDate" class="col-sm-7 col-form-label col-form-label-sm">Estimation
-                                    Date</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control form-control-sm" id="PayoutDate" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <button id="addBill" type="button" class="btn btn-primary btn-sm">
-                                + Add Estimation
-                            </button>
-                        </div>
-                        <div class="col-12">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align: center" scope="col">-</th>
-                                        <th>Job Head</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Impression-Clicks-Views-Lead</th>
-                                        <th scope="col">Gross Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="tableBody payBody"></tbody>
-                            </table>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group row">
-                                <label for="modal_vatOn" class="col-sm-6 col-form-label col-form-label-sm">Vat
-                                    Applies on</label>
-                                <div class="col-sm-6">
-                                    <input readonly type="text" class="form-control form-control-sm" id="modal_vatOn"
-                                        placeholder="" />
-                                    <input readonly type="hidden" class="form-control form-control-sm"
-                                        id="modal_vatOn_hidden" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="modal_commOn" class="col-sm-6 col-form-label col-form-label-sm">Agency
-                                    Comm. Applies on</label>
-                                <div class="col-sm-6">
-                                    <input readonly type="text" class="form-control form-control-sm" id="modal_commOn"
-                                        placeholder="" />
-                                    <input readonly type="hidden" class="form-control form-control-sm"
-                                        id="modal_commOn_hidden" placeholder="" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group row">
-                                <label for="modal_grossAmount" class="col-sm-6 col-form-label col-form-label-sm">Gross
-                                    Amount</label>
-                                <div class="col-sm-6">
-                                    <input readonly type="text" class="form-control form-control-sm"
-                                        id="modal_grossAmount" placeholder="0" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="modal_discount" class="col-sm-6 col-form-label col-form-label-sm">Discount
-                                    Amount</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-sm" id="modal_discount"
-                                        placeholder="0" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="modal_net" class="col-sm-6 col-form-label col-form-label-sm">Net
-                                    Amount</label>
-                                <div class="col-sm-6">
-                                    <input readonly type="text" class="form-control form-control-sm" id="modal_net"
-                                        placeholder="0" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="modal_ait" class="col-sm-6 col-form-label col-form-label-sm">Agency
-                                    Comm</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-sm" id="modal_ait"
-                                        placeholder="0" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="modal_aitAmount" class="col-sm-6 col-form-label col-form-label-sm">Agency
-                                    Comm
-                                    Amount</label>
-                                <div class="col-sm-6">
-                                    <input readonly type="text" class="form-control form-control-sm"
-                                        id="modal_aitAmount" placeholder="0.00" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="modal_vat" class="col-sm-6 col-form-label col-form-label-sm">Vat</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-sm" id="modal_vat"
-                                        placeholder="0" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="modal_vatAmount" class="col-sm-6 col-form-label col-form-label-sm">Vat
-                                    Amount</label>
-                                <div class="col-sm-6">
-                                    <input readonly type="text" class="form-control form-control-sm"
-                                        id="modal_vatAmount" placeholder="0.00" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="modal_gt" class="col-sm-6 col-form-label col-form-label-sm">Grand
-                                    Total</label>
-                                <div class="col-sm-6">
-                                    <input readonly type="text" class="form-control form-control-sm" id="modal_gt"
-                                        placeholder="0" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="offset-9 col-3">
-                            <button id="generatePayout" type="button" class="btn btn-success">
-                                Generate Estimation
-                            </button>
-                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="offset-9 col-3">
+                        <button id="generatePayout" type="button" class="btn btn-success">
+                            Generate Estimation
+                        </button>
                     </div>
                 </div>
-                <div class="modal-footer"></div>
             </div>
         </div>
     </div>
 
-    <!-- Edit data modal starts here -->
+    {{-- end modal --}}
+
+    {{-- <!-- Edit data modal starts here -->
     <div class="modal fade" id="editData" tabindex="-1" role="dialog" aria-labelledby="bill_update"
         aria-hidden="true">
         <form id="editDataForm" novalidate>
@@ -515,7 +520,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @section('secript_esti')
     <script>
@@ -526,10 +531,11 @@
             var jobHeads = [];
             $.ajax({
                 method: "GET",
-                url: "/api/getClientJobheads",
+                url: "get-job-heads",
             }).done(function(response) {
                 jobHeads = response;
-                console.log(jobHeads);
+                // console.log(jobHeads);
+                // console.log('Himel')
             });
 
             function formatDate() {
@@ -756,15 +762,19 @@
                 $("#publisherUserName" + $suffix).change(function() {
                     $.ajax({
                         method: "GET",
-                        url: "/api/getClientData/" + $(this).val(),
+                        url: "get-agencyDetails",
+                        data: {
+                            id: $(this).val()
+                        },
                     }).done(function(response) {
-                        console.log(response.vat);
+                        console.log(response.vat_on);
                         $("#modal_vat" + $suffix).val(response.vat);
-                        $("#modal_ait" + $suffix).val(response.aComm);
-                        $("#modal_vatOn_hidden" + $suffix).val(response.vatOn);
-                        $("#modal_commOn_hidden" + $suffix).val(response.commOn);
-                        $("#modal_vatOn" + $suffix).val(vatOnValues[response.vatOn]);
-                        $("#modal_commOn" + $suffix).val(commOnValues[response.commOn]);
+                        $("#modal_ait" + $suffix).val(response.agency_commission);
+                        $("#modal_vatOn_hidden" + $suffix).val(response.vat_on);
+                        $("#modal_commOn_hidden" + $suffix).val(response.commission_on);
+                        $("#modal_vatOn" + $suffix).val(vatOnValues[response.vat_on]);
+                        $("#modal_commOn" + $suffix).val(commOnValues[response.commission_on]);
+
                         calculateBill($suffix);
                     });
                 });
@@ -814,7 +824,7 @@
                         ).toFixed(2)
                     )
                 );
-                console.log("xxx" + $("#modal_vatOn_hidden" + $suffix).val());
+                // console.log("xxx" + $("#modal_vatOn_hidden" + $suffix).val());
                 switch (parseInt($("#modal_vatOn_hidden" + $suffix).val())) {
                     case 0:
                         $("#modal_vatAmount" + $suffix).val(
@@ -920,7 +930,7 @@
                                 '<option value="' +
                                 val.id +
                                 '">' +
-                                val.jobHead +
+                                val.name +
                                 "</option>";
                         });
                         selectString = selectString + "</select>";
@@ -1157,42 +1167,42 @@
                 "Status",
             ];
             var cCounter = 0;
-            $("#BillDetails").DataTable({
-                initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            var column = this;
-                            console.log(column.header());
-                            if (column[0][0] < 5) {
-                                var select = $(
-                                        '<select><option value="">' +
-                                        columnNames[cCounter] +
-                                        "</option></select>"
-                                    )
-                                    .appendTo($(column.header()).empty())
-                                    .on("change", function() {
-                                        var val = $.fn.dataTable.util.escapeRegex(
-                                            $(this).val()
-                                        );
-                                        column
-                                            .search(val ? "^" + val + "$" : "", true, false)
-                                            .draw();
-                                    });
-                                column
-                                    .data()
-                                    .unique()
-                                    .sort()
-                                    .each(function(d, j) {
-                                        select.append(
-                                            '<option value="' + d + '">' + d + "</option>"
-                                        );
-                                    });
-                            }
-                            cCounter++;
-                        });
-                },
-            });
+            // $("#BillDetails").DataTable({
+            //     initComplete: function() {
+            //         this.api()
+            //             .columns()
+            //             .every(function() {
+            //                 var column = this;
+            //                 console.log(column.header());
+            //                 if (column[0][0] < 5) {
+            //                     var select = $(
+            //                             '<select><option value="">' +
+            //                             columnNames[cCounter] +
+            //                             "</option></select>"
+            //                         )
+            //                         .appendTo($(column.header()).empty())
+            //                         .on("change", function() {
+            //                             var val = $.fn.dataTable.util.escapeRegex(
+            //                                 $(this).val()
+            //                             );
+            //                             column
+            //                                 .search(val ? "^" + val + "$" : "", true, false)
+            //                                 .draw();
+            //                         });
+            //                     column
+            //                         .data()
+            //                         .unique()
+            //                         .sort()
+            //                         .each(function(d, j) {
+            //                             select.append(
+            //                                 '<option value="' + d + '">' + d + "</option>"
+            //                             );
+            //                         });
+            //                 }
+            //                 cCounter++;
+            //             });
+            //     },
+            // });
         });
     </script>
 

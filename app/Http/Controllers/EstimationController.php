@@ -10,8 +10,9 @@ class EstimationController extends Controller
 {
     public function index()
     {
+        $agencies = Agency::all();
         $estimation = Estimation::all();
-        return view('estimations.index',compact('estimation'));
+        return view('estimations.index',compact('estimation','agencies'));
     }
 
     public function create()
