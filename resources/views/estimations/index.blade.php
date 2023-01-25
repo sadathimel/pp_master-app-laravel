@@ -196,11 +196,11 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group row">
-                                    <label for="modal_vatOn" class="col-sm-6 col-form-label col-form-label-sm">Vat
-                                        Applies on</label>
+                                    <label for="modal_vatOn" class="col-sm-6 col-form-label col-form-label-sm">Vat Applies
+                                        on</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-sm" id="modal_vatOn"
-                                            placeholder="" />
+                                        <input readonly type="text" class="form-control form-control-sm"
+                                            id="modal_vatOn" placeholder="" />
                                         <input readonly type="hidden" class="form-control form-control-sm"
                                             id="modal_vatOn_hidden" placeholder="" />
                                     </div>
@@ -300,7 +300,7 @@
 
     {{-- end modal --}}
 
-    {{-- <!-- Edit data modal starts here -->
+    <!-- Edit data modal starts here -->
     <div class="modal fade" id="editData" tabindex="-1" role="dialog" aria-labelledby="bill_update"
         aria-hidden="true">
         <form id="editDataForm" novalidate>
@@ -520,11 +520,21 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 @section('secript_esti')
     <script>
         $(document).ready(function() {
+
+            var vatOnValues = [
+                "Gross",
+                "Net",
+                "Gross-Agency Commission",
+                "Net-Agency Commission",
+            ];
+
+            console.log(vatOnValues);
+            var commOnValues = ["Gross", "Net"];
 
             // $('#example').DataTable();
 
@@ -664,18 +674,12 @@
                 initiateBill("");
                 $("#addData").modal("show");
             });
-            prepare("", "/api/saveEstimation");
+            prepare("", "saveEstimation");
             prepare("_update", "/api/updateEstimation");
             preparetable("");
             preparetable("_update");
             $("#updatePublisherForm").validate();
-            var vatOnValues = [
-                "Gross",
-                "Net",
-                "Gross-Agency Commission",
-                "Net-Agency Commission",
-            ];
-            var commOnValues = ["Gross", "Net"];
+
 
             function preparetable($suffix) {
                 $(".payBody" + $suffix).on(
@@ -767,7 +771,8 @@
                             id: $(this).val()
                         },
                     }).done(function(response) {
-                        console.log(response.vat_on);
+                        // console.log(response.vat_on);
+                        // console.log(typeof(response.vat_on));
                         $("#modal_vat" + $suffix).val(response.vat);
                         $("#modal_ait" + $suffix).val(response.agency_commission);
                         $("#modal_vatOn_hidden" + $suffix).val(response.vat_on);
@@ -963,7 +968,10 @@
                     calculateBill($suffix);
                 });
                 $("#generatePayout" + $suffix).click(function() {
+
                     calculateBill($suffix);
+
+                    console.log(billObj)
                     populateBillObj(billObj, $suffix);
                     //$(this).prop('disabled', true);
                     var t = $("#editDataForm").validate({
@@ -985,7 +993,7 @@
                             },
                         }).done(function(response) {
                             console.log("posted!!");
-                            window.location.href = "/agencyEstimation";
+                            window.location.href = "/estimation";
                         });
                     }
                 });

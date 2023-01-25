@@ -194,11 +194,11 @@
                                                     <select name="country" class="form-control select2"
                                                         style="width: 100%;">
                                                         <option value="">Select Country</option>
-                                                        <option value="1"
-                                                            {{ old('country' === 1 ? 'selected' : '') }}>Bangladesh
+                                                        <option value="0"
+                                                            {{ old('country' === 0 ? 'selected' : '') }}>Bangladesh
                                                         </option>
-                                                        <option value="2"
-                                                            {{ old('country' === 2 ? 'selected' : '') }}>Others</option>
+                                                        <option value="1"
+                                                            {{ old('country' === 1 ? 'selected' : '') }}>Others</option>
                                                     </select>
 
                                                     @error('country')
@@ -289,15 +289,15 @@
                                                     <select name="vat_on" class="form-control select2"
                                                         style="width: 100%;">
                                                         <option>Select</option>
+                                                        <option value="0"
+                                                            {{ old('vat_on' === 0 ? 'selected' : '') }}>Gross</option>
                                                         <option value="1"
-                                                            {{ old('vat_on' === 1 ? 'selected' : '') }}>Gross</option>
+                                                            {{ old('vat_on' === 1 ? 'selected' : '') }}>Net</option>
                                                         <option value="2"
-                                                            {{ old('vat_on' === 2 ? 'selected' : '') }}>Net</option>
-                                                        <option value="3"
-                                                            {{ old('vat_on' === 3 ? 'selected' : '') }}>Gross-Agency
+                                                            {{ old('vat_on' === 2 ? 'selected' : '') }}>Gross-Agency
                                                             Commission</option>
-                                                        <option value="4"
-                                                            {{ old('vat_on' === 4 ? 'selected' : '') }}>Net-Agency
+                                                        <option value="3"
+                                                            {{ old('vat_on' === 3 ? 'selected' : '') }}>Net-Agency
                                                             Commission</option>
                                                     </select>
 
@@ -318,16 +318,11 @@
                                                     <select name="commission_on" class="form-control select2"
                                                         style="width: 100%;">
                                                         <option>Select</option>
+                                                        <option value="0"
+                                                            {{ old('vat_on' === 0 ? 'selected' : '') }}>Gross</option>
                                                         <option value="1"
-                                                            {{ old('vat_on' === 1 ? 'selected' : '') }}>Gross</option>
-                                                        <option value="2"
-                                                            {{ old('vat_on' === 2 ? 'selected' : '') }}>Net</option>
-                                                        <option value="3"
-                                                            {{ old('vat_on' === 3 ? 'selected' : '') }}>Gross-Agency
-                                                            Commission</option>
-                                                        <option value="4"
-                                                            {{ old('vat_on' === 4 ? 'selected' : '') }}>Net-Agency
-                                                            Commission</option>
+                                                            {{ old('vat_on' === 1 ? 'selected' : '') }}>Net</option>
+
                                                     </select>
 
                                                     @error('commission_on')

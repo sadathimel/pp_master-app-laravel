@@ -20,4 +20,11 @@ class CommonController extends Controller
         return response()->json($data);
     }
 
+
+    public function saveEstimation(Request $request)
+    {
+        $data = Agency::find($request->id);
+        return response()->json($data);
+    }
+
 }

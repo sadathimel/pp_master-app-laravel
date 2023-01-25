@@ -49,10 +49,9 @@ Route::middleware('auth')->group(function () {
 
 // job
 Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
-
+Route::get('saveEstimation', [EstimationController::class, 'saveEstimation']);
     // Estimation 
-    Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
-    Route::get('/estimation/create', [EstimationController::class, 'create'])->name('estimation.create');
+    // Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
     // Route::post('/estimation/create', [EstimationController::class, 'store']);
     // Route::get('/estimation/edit/{estimation}', [EstimationController::class, 'edit'])->name('estimation.edit');
     // Route::post('/estimation/edit/{estimation}', [EstimationController::class, 'update']);
@@ -67,10 +66,10 @@ Route::get('/estimation', [EstimationController::class, 'index'])->name('estimat
     // Route::post('/bill/edit/{Bill}', [BillController::class, 'update']);
     // Route::post('/bill/edit/{Bill}', [BillController::class, 'delete']);
     // Route::get('/bill/view/{Bill}', [BillController::class, 'show'])->name('bill.view'); 
-
-
-
-// Report
+    
+    
+    
+    // Report
 Route::get('/report', [SellController::class, 'index'])->name('report');
 Route::get('/report/create', [SellController::class, 'create'])->name('report.create');
 
@@ -78,3 +77,4 @@ Route::get('/report/create', [SellController::class, 'create'])->name('report.cr
 
 Route::get('get-job-heads', [CommonController::class, 'getJobHeads']);
 Route::get('get-agencyDetails', [CommonController::class, 'getAgencies']);
+

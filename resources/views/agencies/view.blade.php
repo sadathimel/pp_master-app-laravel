@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <th>Agency Type</th>
-                        <td>{{ [1 => 'Agency', 2 => 'Direct'][$agency->agency_type] }}</td>
+                        <td>{{ [0 => 'Agency', 1 => 'Direct'][$agency->agency_type] }}</td>
                         <th>Contact Person Name</th>
                         <td>{{ $agency->contact_person }}</td>
                     </tr>
@@ -53,7 +53,7 @@
 
                     <tr>
                         <th>Country</th>
-                        <td>{{ [1 => 'Bangledesh', 2 => 'Others'][$agency->country] }}</td>
+                        <td>{{ [0 => 'Bangledesh', 1 => 'Others'][$agency->country] }}</td>
                         <th>Agency Commission</th>
                         <td>{{ $agency->agency_commission }}</td>
                     </tr>
@@ -70,13 +70,13 @@
                         <th>Vat On</th>
                         <td>
 
-                            @if ($agency->vat_on == 1)
+                            @if ($agency->vat_on == 0)
                                 Gross
-                            @elseif($agency->vat_on == 2)
+                            @elseif($agency->vat_on == 1)
                                 Net
-                            @elseif($agency->vat_on == 3)
+                            @elseif($agency->vat_on == 2)
                                 Gross-Agency Commmission
-                            @elseif($agency->vat_on == 4)
+                            @elseif($agency->vat_on == 3)
                                 Net-Agency Comission
                             @else
                             @endif
@@ -86,16 +86,16 @@
                         <th>Commission On</th>
                         {{-- <td>{{ [1 => 'Gross', 2 => 'Net', 3 => 'Gross-Agency Commmission', 4 => 'Net-Agency Comission'][$agency->commission_on] }} --}}
                         {{-- </td> --}}
-                        @if ($agency->commission_on == 1)
-                            Gross
-                        @elseif($agency->commission_on == 2)
-                            Net
-                        @elseif($agency->commission_on == 3)
-                            Gross-Agency Commmission
-                        @elseif($agency->commission_on == 4)
-                            Net-Agency Comission
-                        @else
-                        @endif
+
+                        <td>
+                            @if ($agency->commission_on == 0)
+                                Gross
+                            @elseif($agency->commission_on == 1)
+                                Net
+                            @else
+                            @endif
+
+                        </td>
                     </tr>
 
 

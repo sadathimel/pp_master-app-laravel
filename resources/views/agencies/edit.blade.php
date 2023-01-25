@@ -74,13 +74,13 @@
 
                                                     <select name="agency_type" class="form-control select2"
                                                         style="width: 100%;">
-                                                        <option value="1"
-                                                            {{ empty(old('agency_type')) ? ($errors->has('agency_type') ? '' : ($agency->agency_type == 1 ? 'selected' : '')) : (old('agency_type') === 1 ? 'selected' : '') }}>
+                                                        <option value="0"
+                                                            {{ empty(old('agency_type')) ? ($errors->has('agency_type') ? '' : ($agency->agency_type == 0 ? 'selected' : '')) : (old('agency_type') === 0 ? 'selected' : '') }}>
                                                             Agency
                                                         </option>
 
-                                                        <option value="2"
-                                                            {{ empty(old('agency_type')) ? ($errors->has('agency_type') ? '' : ($agency->agency_type == 2 ? 'selected' : '')) : (old('agency_type') === 2 ? 'selected' : '') }}>
+                                                        <option value="1"
+                                                            {{ empty(old('agency_type')) ? ($errors->has('agency_type') ? '' : ($agency->agency_type == 1 ? 'selected' : '')) : (old('agency_type') === 1 ? 'selected' : '') }}>
                                                             Direct
                                                         </option>
                                                     </select>
@@ -201,16 +201,16 @@
                                                     <select name="country" class="form-control select2"
                                                         style="width: 100%;">
                                                         <option value="">Select Country</option>
-                                                        <option value="1"
-                                                            {{ empty(old('country')) ? ($errors->has('country') ? '' : ($agency->country == 1 ? 'selected' : '')) : (old('country') === 1 ? 'selected' : '') }}>
+                                                        <option value="0"
+                                                            {{ empty(old('country')) ? ($errors->has('country') ? '' : ($agency->country == 0 ? 'selected' : '')) : (old('country') === 0 ? 'selected' : '') }}>
                                                             Bangladesh
 
                                                         </option>
-                                                        <option value="2"
-                                                            {{ $agency->country == 2 ? 'selected' : '' }}>
+                                                        <option value="1"
+                                                            {{ $agency->country == 1 ? 'selected' : '' }}>
 
 
-                                                            {{ empty(old('country')) ? $errors->has('country' ? '' : ($agency->country === 2 ? 'selected' : '')) : (old('country') === 2 ? 'selectted' : '') }}
+                                                            {{ empty(old('country')) ? $errors->has('country' ? '' : ($agency->country === 1 ? 'selected' : '')) : (old('country') === 1 ? 'selectted' : '') }}
 
                                                             Others</option>
                                                     </select>
@@ -304,23 +304,23 @@
                                                         style="width: 100%;">
                                                         <option value="">Select</option>
 
+                                                        <option value="0"
+                                                            {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 0 ? 'selected' : '')) : (old('vat_on') === 0 ? 'selected' : '') }}>
+                                                            Gross
+                                                        </option>
+
                                                         <option value="1"
                                                             {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 1 ? 'selected' : '')) : (old('vat_on') === 1 ? 'selected' : '') }}>
-                                                            Gross
+                                                            Net
                                                         </option>
 
                                                         <option value="2"
                                                             {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 2 ? 'selected' : '')) : (old('vat_on') === 2 ? 'selected' : '') }}>
-                                                            Net
+                                                            Gross-Agency Commission
                                                         </option>
 
                                                         <option value="3"
                                                             {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 3 ? 'selected' : '')) : (old('vat_on') === 3 ? 'selected' : '') }}>
-                                                            Gross-Agency Commission
-                                                        </option>
-
-                                                        <option value="4"
-                                                            {{ empty(old('vat_on')) ? ($errors->has('vat_on') ? '' : ($agency->vat_on == 4 ? 'selected' : '')) : (old('vat_on') === 4 ? 'selected' : '') }}>
                                                             Net-Agency Commission
                                                         </option>
 
@@ -344,23 +344,23 @@
                                                         style="width: 100%;">
                                                         <option value="">Select</option>
 
+                                                        <option value="0"
+                                                            {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 0 ? 'selected' : '')) : (old('commission_on') === 0 ? 'selected' : '') }}>
+                                                            Gross
+                                                        </option>
+
                                                         <option value="1"
                                                             {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 1 ? 'selected' : '')) : (old('commission_on') === 1 ? 'selected' : '') }}>
-                                                            Gross
+                                                            Net
                                                         </option>
 
                                                         <option value="2"
                                                             {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 2 ? 'selected' : '')) : (old('commission_on') === 2 ? 'selected' : '') }}>
-                                                            Net
+                                                            Gross-Agency Commission
                                                         </option>
 
                                                         <option value="3"
                                                             {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 3 ? 'selected' : '')) : (old('commission_on') === 3 ? 'selected' : '') }}>
-                                                            Gross-Agency Commission
-                                                        </option>
-
-                                                        <option value="4"
-                                                            {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 4 ? 'selected' : '')) : (old('commission_on') === 4 ? 'selected' : '') }}>
                                                             Net-Agency Commission
                                                         </option>
                                                     </select>
