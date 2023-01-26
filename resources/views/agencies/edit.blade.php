@@ -354,15 +354,6 @@
                                                             Net
                                                         </option>
 
-                                                        <option value="2"
-                                                            {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 2 ? 'selected' : '')) : (old('commission_on') === 2 ? 'selected' : '') }}>
-                                                            Gross-Agency Commission
-                                                        </option>
-
-                                                        <option value="3"
-                                                            {{ empty(old('commission_on')) ? ($errors->has('commission_on') ? '' : ($agency->commission_on == 3 ? 'selected' : '')) : (old('commission_on') === 3 ? 'selected' : '') }}>
-                                                            Net-Agency Commission
-                                                        </option>
                                                     </select>
 
                                                     @error('commission_on')

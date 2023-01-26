@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
 
 // job
 Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
-Route::get('saveEstimation', [EstimationController::class, 'saveEstimation']);
+Route::post('/estimation', [EstimationController::class, 'store']);
     // Estimation 
     // Route::get('/estimation', [EstimationController::class, 'index'])->name('estimation');
     // Route::post('/estimation/create', [EstimationController::class, 'store']);
